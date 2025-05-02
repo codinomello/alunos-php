@@ -1,0 +1,149 @@
+/* Importação da fonte Cascadia Code */
+@import url('https://fonts.cdnfonts.com/css/cascadia-code');
+
+/* Variáveis de cores do tema Gruvbox */
+:root {
+    --bg: #1d2021;        /* Fundo escuro */
+    --fg: #d5c4a1;        /* Bege claro */
+    --highlight: #fabd2f; /* Amarelo */
+    --accent1: #fb4934;   /* Vermelho */
+    --accent2: #b8bb26;   /* Verdes */
+    --hover: #fe8019;     /* Laranja */
+    --extra1: #83a598;    /* Turquesa */
+    --extra2: #d3869b;    /* Rosa/roxo */
+    --extra3: #458588;    /* Azul */
+}
+
+/* Estilos gerais */
+body {
+    background-color: var(--bg);
+    color: var(--fg);
+    font-family: 'Cascadia Code', 'Courier New', monospace;
+    font-size: 1.1rem;
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+}
+
+/* Cabeçalho */
+header {
+    background-color: var(--bg);
+    border-bottom: 2px solid var(--accent2);
+    padding: 1rem;
+}
+
+/* Navegação */
+.navegação ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.navegação a {
+    color: var(--highlight);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.navegação a:hover {
+    color: var(--hover);
+    background-color: var(--extra2); /* Rosa/roxo claro no hover */
+    border-radius: 4px;
+}
+
+/* Conteúdo principal */
+.conteúdo {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+    border: 1px solid var(--extra1); /* Turquesa nas bordas */
+    background-color: var(--bg);
+}
+
+/* Título */
+.principal h1 {
+    color: var(--accent1); /* Vermelho queimado */
+    font-size: 2.2rem;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+/* Subtítulo */
+.principal p {
+    color: var(--extra1); /* Turquesa no subtítulo */
+    font-size: 1.2rem;
+}
+
+.campo-formulário {
+    margin-bottom: 1rem;
+}
+
+.campo-formulário label {
+    display: block;
+    color: var(--extra1);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.campo-formulário input {
+    width: 100%;
+    padding: 0.5rem;
+    background-color: var(--bg);
+    border: 1px solid var(--extra3);
+    color: var(--fg);
+    font-family: 'Cascadia Code', monospace;
+    font-size: 1rem;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+}
+
+.campo-formulário input:focus {
+    border-color: var(--highlight);
+    outline: none;
+}
+
+.enviar {
+    background-color: var(--accent1);
+    color: var(--bg);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-family: 'Cascadia Code', monospace;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.enviar:hover {
+    background-color: var(--hover);
+    transform: scale(1.05);
+}
+
+fieldset {
+    border: 1px dashed var(--highlight);
+    padding: 1.5rem;
+    background-color: rgba(40, 42, 46, 0.3);
+}
+
+legend .destaque {
+    color: var(--highlight);
+}
+
+/* Rodapé */
+footer {
+    background-color: var(--bg);
+    border-top: 2px solid var(--accent2); /* Verde oliva */
+    text-align: center;
+    padding: 1rem;
+    color: var(--fg);
+    font-size: 1rem;
+}
