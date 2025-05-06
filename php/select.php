@@ -1,18 +1,11 @@
 <?php
     include "sql.php";
     
-    $nome = $_REQUEST["nome"];
-    $idade = $_REQUEST["idade"];
-    $email = $_REQUEST["email"];
-    
-    $sql = "INSERT INTO alunos (nome, idade, email) VALUES (:nome, :idade, :email)";
+    $sql = "SELECT * FROM alunos";
 
     $smt = $conexao->prepare($sql);
-    $smt->bindValue(':nome', $nome);
-    $smt->bindValue(':idade', $idade);
-    $smt->bindValue(':email', $email);
     
-    $resultado = $smt->execute();
+    $resultado = $conexao->query($sql);
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -20,7 +13,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Status do Cadastro</title>
+    <title>Consulta do Cadastro</title>
     <link rel="icon" type="image/png" href="images/icons/art.png">
     <link rel="stylesheet" href="../styles.css">
     <style>
@@ -48,24 +41,38 @@
         <nav class="navegação">
             <ul>
                 <li><a href="../index.html">🏡</a></li>
-                <li><a>Cadastro</a></li>
+                <li><a href="insert.php">Cadastro</a></li>
+                <li><a>Consulta</a></li>
             </ul>
         </nav>
     </header>
 
     <main class="conteúdo">
         <section class="principal">
-            <h1>Status do Cadastro</h1>
+            <h1>Consulta do Cadastro</h1>
             <div class="introdução">
-                <?php if ($resultado): ?>
-                    <p class="destaque">Dados inseridos com sucesso!</p>
-                <?php else: ?>
-                    <p class="destaque" style="color: var(--accent1);">Erro ao inserir dados</p>
-                <?php endif; ?>
-                <div>
-                    <a href="select.php" class="voltar-link" style="color: var(--accent2);">Consultar</a>
-                    <a href="../index.html" class="voltar-link" style="color: var(--highlight);">Voltar</a>
-                </div>
+                <table border=1>
+                    <?php while ($linha = $resultado->fetch(PDO::FETCH_ASSOC)) { ?>
+                        <tr>
+                            <td>
+                                <?php echo $linha["nome"]; ?>
+                            </td>
+                            <td>
+                                <?php echo $linha["idade"]; ?>
+                            </td>
+                            <td>
+                                <?php echo $linha["email"]; ?>           
+                            </td>
+                            <td>
+                                <a href='delete.php?codigo=" . $linha["codigo"]  . "'>Excluir</a>
+                            </td>
+                            <td>
+                                <a href='change.php?codigo=" . $linha["codigo"]  . "'>Alterar</a>
+                            </td>
+                        </tr>
+                    <?php } ?>
+                </table>
+                <a href="../index.html" class="voltar-link">Voltar</a>
             </div>
         </section>
     </main>
