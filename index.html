@@ -12,7 +12,9 @@
     <header>
         <nav class="navegação">
             <ul>
-                <li><a href="index.html">Cadastro</a></li>
+                <li><a href="index.html">🏡</a></li>
+                <li><a href="php/select.php">🏡</a>Consulta</li>
+                <li><a href="php/select.php">🏡</a>Excluir</li>
             </ul>
         </nav>
     </header>
@@ -26,6 +28,10 @@
         <form name="formulário" method="post" action="php/insert.php" class="introdução">
             <fieldset>
                 <legend><h2 class="destaque">FORMULÁRIO</h2></legend>
+                <div class="campo-formulário">
+                    <label for="ra">RA</label>
+                    <input type="number" max="999999999" name="ra" id="ra" required>
+                </div>
                 <div class="campo-formulário">
                     <label for="nome">Nome</label>
                     <input type="text" name="nome" id="nome" required>

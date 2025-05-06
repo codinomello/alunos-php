@@ -1,12 +1,10 @@
 <?php
-    include "sql.php" ;
+    include "sql.php";
 
-    $codigo = $_REQUEST["codigo"] ;
-
-    $sql = "DELETE FROM alunos where codigo=:cod"  ;
-
+    $ra = $_REQUEST["ra"];
+    $sql = "DELETE FROM alunos where ra=:ra";
     $stm = $conexao->prepare($sql) ;
-    $stm->bindValue( ':cod'  , $codigo  ) ;
+    $stm->bindValue( ':cod'  , $ra  ) ;
 
     $resultado = $stm->execute() ;
 
@@ -19,5 +17,4 @@
 
     echo "<br><br>" ;
     echo "<a href='select.php'>Voltar</a>"
-
 ?>

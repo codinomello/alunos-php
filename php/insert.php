@@ -1,18 +1,21 @@
 <?php
     include "sql.php";
-    
-    $nome = $_REQUEST["nome"];
-    $idade = $_REQUEST["idade"];
-    $email = $_REQUEST["email"];
-    
-    $sql = "INSERT INTO alunos (nome, idade, email) VALUES (:nome, :idade, :email)";
 
-    $smt = $conexao->prepare($sql);
-    $smt->bindValue(':nome', $nome);
-    $smt->bindValue(':idade', $idade);
-    $smt->bindValue(':email', $email);
-    
-    $resultado = $smt->execute();
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $ra = $_REQUEST["ra"];
+        $nome = $_REQUEST["nome"];
+        $idade = $_REQUEST["idade"];
+        $email = $_REQUEST["email"];
+        
+        $sql = "INSERT INTO alunos (ra, nome, idade, email) VALUES (:ra, :nome, :idade, :email)";
+        $smt = $conexao->prepare($sql);
+        $smt->bindValue(':ra', $nome);
+        $smt->bindValue(':nome', $nome);
+        $smt->bindValue(':idade', $idade);
+        $smt->bindValue(':email', $email);
+        
+        $resultado = $smt->execute();
+    }
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -23,25 +26,6 @@
     <title>Status do Cadastro</title>
     <link rel="icon" type="image/png" href="images/icons/art.png">
     <link rel="stylesheet" href="../styles.css">
-    <style>
-        .voltar-link {
-            display: inline-block;
-            margin-top: 1rem;
-            color: var(--highlight);
-            text-decoration: none;
-            font-weight: 600;
-            padding: 0.5rem 1rem;
-            border: 1px solid var(--extra3);
-            border-radius: 4px;
-            transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
-        }
-
-        .voltar-link:hover {
-            color: var(--hover);
-            background-color: var(--extra2);
-            transform: scale(1.05);
-        }
-    </style>
 </head>
 <body>
     <header>
